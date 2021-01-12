@@ -20,7 +20,7 @@ pipeline{
         stage("Test"){
             steps{
                 echo "========executing Test========"
-                sh 'pytest -sv test.py'
+                sh 'docker build -f Dockerfile-test -t test-image .'
             }
             post{
                 always{
