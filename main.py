@@ -12,7 +12,7 @@ def index():
         'name' : __name__,
         'version': version
     }
-    return json.dumps(returnDict, indent=4, sort_keys=True)
+    return json.dumps(returnDict, indent=4, sort_keys=True )
 
 if __name__ == "__main__":
 
