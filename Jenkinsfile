@@ -8,7 +8,7 @@ pipeline{
                 sh 'echo "VERSION=$BUILD_NUMBER" > .env'
                 sh 'cat .env'
                 //Build the application
-                sh 'docker-compose build --no-cache module'
+                sh 'docker-compose build module'
             }
             post{                
                 success{
