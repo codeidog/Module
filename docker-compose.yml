@@ -3,7 +3,7 @@ services:
   module:
     build:
       context: .
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     image: module:${VERSION}
     ports: 
       - 80:80
