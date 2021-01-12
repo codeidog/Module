@@ -19,7 +19,7 @@ pipeline{
         }
         stage("Test"){
             steps{
-                echo "========executing A========"
+                echo "========executing Test========"
                 pytest -sv test.py
             }
             post{
