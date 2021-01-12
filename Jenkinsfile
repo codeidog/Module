@@ -3,17 +3,14 @@ pipeline{
     stages{
         stage("Build"){
             steps{
-                echo "========executing A========"
+                echo "========executing Build========"
                 //Set the version
                 sh 'echo "VERSION=$BUILD_NUMBER" > .env'
                 sh 'cat .env'
                 //Build the application
                 sh 'docker-compose build --no-cache module'
             }
-            post{
-                always{
-                    echo "========always========"
-                }
+            post{                
                 success{
                     echo "========A executed successfully========"
                 }
@@ -27,10 +24,22 @@ pipeline{
                 echo "========executing Test========"
                 sh 'docker build -f Test/Dockerfile -t test-image .'
             }
-            post{
-                always{
-                    echo "========always========"
+            post{                
+                success{
+                    echo "========A executed successfully========"
                 }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
+        }
+
+        stage("Deploy"){
+            steps{
+                echo "========executing Test========"
+                sh 'docker-compose up'
+            }
+            post{                
                 success{
                     echo "========A executed successfully========"
                 }
@@ -40,10 +49,7 @@ pipeline{
             }
         }
     }
-    post{
-        always{
-            echo "========always========"
-        }
+    post{        
         success{
             echo "========pipeline executed successfully ========"
         }
