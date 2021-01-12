@@ -5,7 +5,7 @@ pipeline{
             steps{
                 echo "========executing A========"
                 //Set the version
-                "VERSION=$BUILD_NUMBER" > .env         
+                sh ''"VERSION=$BUILD_NUMBER" > .env'
                 sh 'cat .env'
                 //Build the application
                 sh 'docker-compose build module'
