@@ -3,7 +3,12 @@ pipeline{
     stages{
         stage("Build"){
             steps{
-                echo "========executing A========"                
+                echo "========executing A========"
+                //Set the version
+                "VERSION=$BUILD_NUMBER" > .env         
+                sh 'cat .env'
+                //Build the application
+                sh 'docker-compose build module'
             }
             post{
                 always{
