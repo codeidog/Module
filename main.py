@@ -1,6 +1,7 @@
 from flask import Flask
 from  SubModule import submodule
 import json
+import logging
 version = '1.0.10'
 app = Flask(__name__)
 app.register_blueprint(submodule, url_prefix='/submodule')
@@ -17,3 +18,9 @@ def index():
 if __name__ == "__main__":
 
     app.run()
+
+#Producton use by gunicorn
+if __name__ != '__main__':    
+    gunicorn_logger = logging.getLogger('gunicorn.error')
+    app.logger.handlers = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)

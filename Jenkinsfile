@@ -20,7 +20,7 @@ pipeline{
         stage("Test"){
             steps{
                 echo "========executing Test========"
-                sh 'docker build -f Dockerfile-test -t test-image .'
+                sh 'docker build -f Test/Dockerfile -t test-image .'
             }
             post{
                 always{
