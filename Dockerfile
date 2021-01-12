@@ -1,9 +1,11 @@
 FROM python:3.6-slim
 ENV LOG_LEVEL=INFO
 
+
 #Install the dependecies
-COPY ./requirements.txt /opt/Module
+RUN mkdir /opt/Module
 WORKDIR /opt/Module
+COPY ./requirements.txt /opt/Module
 RUN pip3 install -r /opt/Module/requirements.txt
 
 COPY ./main.py /opt/Module
