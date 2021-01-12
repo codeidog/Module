@@ -1,0 +1,9 @@
+version: "3.8"
+services: 
+  Module:
+    build:
+      context: .
+      dockerfile: dockerfile
+    image: module:${VERSION}
+    ports: 
+      - 80:80
