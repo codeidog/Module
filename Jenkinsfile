@@ -12,21 +12,21 @@ pipeline{
             }
             post{                
                 success{
-                    echo "========A executed successfully========"
+                    echo "========Build executed successfully========"
                 }
                 failure{
-                    echo "========A execution failed========"
+                    echo "========Build execution failed========"
                 }
             }
         }
         stage("Test"){
             steps{
-                echo "========executing Test========"
+                echo "========Executing Test========"
                 sh 'docker build -f Test/Dockerfile -t test-image .'
             }
             post{                
                 success{
-                    echo "========A executed successfully========"
+                    echo "========Test executed successfully========"
                 }
                 failure{
                     echo "========A execution failed========"
@@ -36,15 +36,15 @@ pipeline{
 
         stage("Deploy"){
             steps{
-                echo "========executing Test========"
+                echo "========Executing Deploy========"
                 sh 'docker-compose up -d'
             }
             post{                
                 success{
-                    echo "========A executed successfully========"
+                    echo "========Deploy executed successfully========"
                 }
                 failure{
-                    echo "========A execution failed========"
+                    echo "========Deploy execution failed========"
                 }
             }
         }
