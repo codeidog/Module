@@ -2,7 +2,7 @@ from flask import Flask
 from  SubModule import submodule
 import json
 import logging
-version = '1.0.1.7'
+version = '1.0.1.8'
 
 app = Flask(__name__)
 app.register_blueprint(submodule, url_prefix='/submodule')
